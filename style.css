@@ -1,0 +1,233 @@
+html {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: forestgreen;
+  background-image: 
+    url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+  font-family: system-ui;
+  font-size: 12px;
+  text-align: center;
+}
+
+body {
+  width: 100%;
+  max-width: 650px;
+  aspect-ratio: 1 / 1;
+}
+
+body:after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: orange;
+  z-index: 1000;
+  mix-blend-mode: color-burn;
+  opacity: .35;
+}
+
+#corn_maze {
+  width: 100%;
+  /*   width: 640px; */
+  aspect-ratio: 1 / 1;
+  position: relative;
+  background-color: #D8A57C;
+  background-image: 
+    url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  border-radius: 1rem;
+}
+#corn_maze:before {
+  content: '';
+  width: calc(100% + 10px);
+  aspect-ratio: 1 / 1;  
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  box-sizing: border-box;
+  border: 10px solid #D8A57C;
+  border-radius: 1rem;
+  filter: blur(3px);
+}
+
+#child_of_the_corn {
+  width: calc(100% / 16);
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  top: 0;
+  left: calc((100% / 16)*7);
+  z-index: 100;
+  transition: .25s;
+}
+@keyframes bounce {
+  50% {
+    transform-origin: 50% 100%;
+    transform: scaleY(.85);
+  }
+}
+#child_of_the_corn:before {
+  content:'';
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(100% 10% at 50% 100%, rgba(0,0,0,.25), transparent 50%),
+    url('https://contentservice.mc.reyrey.net/image_v1.0.0/?id=44c58e94-4920-5729-9b8c-bc3707e0fda3&637967826969835513');
+  background-size: 100% 100%;
+  border-radius: 0 0 15% 15%;
+  filter: brightness(0);
+  transform-origin: 50% 100%;
+  transform: skewX(45deg) scaleY(.5);
+  opacity: .25;
+  pointer-events: none;
+}
+#child_of_the_corn:after {
+  content:'';
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(100% 10% at 50% 100%, rgba(0,0,0,.25), transparent 50%),
+    url('https://contentservice.mc.reyrey.net/image_v1.0.0/?id=44c58e94-4920-5729-9b8c-bc3707e0fda3&637967826969835513');
+  background-size: 100% 100%;
+  border-radius: 0 0 15% 15%;
+  pointer-events: none;
+  animation: bounce 1s linear infinite;
+}
+
+/* #btn_box { 
+  display: none;
+}
+@media (pointer:coarse) {
+  #btn_box { display: block; }
+} */
+
+.game_button {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  border-left: 8px solid black;
+  border-top: 8px solid black;
+  background: linear-gradient(to bottom left, transparent 40%, black 40% 60%, transparent 60%);
+  opacity: .5;
+}
+.game_button:hover {
+  opacity: 1;
+}
+.button_left {
+  transform: translateX(-75%) rotate(-45deg) scale(.5);
+}
+.button_right {
+  transform: translateX(75%) rotate(135deg) scale(.5);
+}
+.button_top {
+  transform: translateY(-75%) rotate(45deg) scale(.5);
+}
+.button_bottom {
+  transform: translateY(75%) rotate(-135deg) scale(.5);
+}
+
+
+
+.maze_block {
+  width: calc(100% / 16);
+  aspect-ratio: 1 / 1;
+  float: left;
+  position: relative;
+}
+
+.maze_block.path {
+
+}
+.maze_block.corn {
+  transform-origin: 50% 100%;
+  transform: scale(0);
+  animation: corn 1s linear forwards;
+  z-index: 500;
+}
+@keyframes corn {
+  100% { transform: scale(1); }
+}
+.maze_block.corn:before {
+  content:'';
+  width: 100%;
+  aspect-ratio: 1 / 1.25;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(100% 10% at 50% 100%, rgba(0,0,0,.25), transparent 50%),
+    url('https://contentservice.mc.reyrey.net/image_v1.0.0/?id=5c73c907-58f9-5594-9f2f-b827c570eb19&637967816130085816');
+  background-size: 100% 100%;
+  border-radius: 0 0 15% 15%;
+  filter: brightness(0);
+  transform-origin: 50% 100%;
+  transform: skewX(45deg) scaleY(.5);
+  opacity: .25;
+  z-index: 500;
+  pointer-events: none;
+}
+.maze_block.corn:after {
+  content:'';
+  width: 100%;
+  aspect-ratio: 1 / 1.25;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(100% 10% at 50% 100%, rgba(0,0,0,.25), transparent 50%),
+    url('https://contentservice.mc.reyrey.net/image_v1.0.0/?id=5c73c907-58f9-5594-9f2f-b827c570eb19&637967816130085816');
+  background-size: 100% 100%;
+  border-radius: 0 0 15% 15%;
+  z-index: 500;
+  pointer-events: none;
+}
+.sway:before {
+  transform-origin: 50% 100%;
+  animation: sway2 2s linear infinite;
+}
+@keyframes sway2 {
+  25% { transform: skewX(48deg) scaleY(.5); }
+  75% { transform: skewX(43deg) scaleY(.5); }
+}
+
+.sway:after {
+  transform-origin: 50% 100%;
+  animation: sway 2s linear infinite;
+}
+@keyframes sway {
+  25% { transform: skewX(3deg); }
+  75% { transform: skewX(-3deg); }
+}
+
+.path_startpoint:before {
+  content: '';
+  width: 100%;
+  aspect-ratio: 1 / 2;
+  background-image: 
+    url('https://www.transparenttextures.com/patterns/asfalt-dark.png'),
+    linear-gradient(to top, #D8A57C 50%, transparent);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+.path_endpoint:before {
+  content: '';
+  width: 200%;
+  aspect-ratio: 2 / 1;
+  background-image: 
+    url('https://www.transparenttextures.com/patterns/asfalt-dark.png'),
+    linear-gradient(to right, #D8A57C 50%, transparent);
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
